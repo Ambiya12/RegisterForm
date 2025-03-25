@@ -12,9 +12,6 @@ const Navbar = () => {
                         <Link to="/profile" className="text-white ">Profile</Link>
                     </li>
                     <li>
-                        <Link to="/contact" className="text-white ">Contact</Link>
-                    </li>
-                    <li>
                         <Link to="/register" className="bg-indigo-600 text-white px-4 py-2 rounded">Sign Up</Link>
                     </li>
                 </ul>
