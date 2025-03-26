@@ -1,7 +1,8 @@
 import { useContext } from 'react'
-import { ServicesContext } from '../context/servicesContext.jsx'
+import { ServicesContext } from './context/servicesContext.jsx'
 
 function App() {
+  // eslint-disable-next-line no-unused-vars
   const [services, setServices]= useContext(ServicesContext)
 
   return (
