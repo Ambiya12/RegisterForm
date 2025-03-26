@@ -1,32 +1,8 @@
-import './App.css'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { ServicesContext } from '../context/servicesContext.jsx'
 
 function App() {
-  const [services, setServices] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  const fetchServices = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8000/api/service/`)
-      if (response.status === 200) {
-        setServices(response.data)
-      }
-    } catch (err) {
-      console.error(err)
-      setError('Failed to fetch services')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    fetchServices()
-  }, [])
-
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>{error}</p>
+  const [services, setServices]= useContext(ServicesContext)
 
   return (
     <div className="p-4">
