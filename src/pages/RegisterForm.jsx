@@ -1,8 +1,10 @@
 import {useState} from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router';
 
 
 const RegisterForm = () => {
+    let navigate = useNavigate();
     const [first_name, setFirst_Name] = useState('')
     const [last_name, setLast_Name] = useState('')
     const [email, setEmail] = useState('')
@@ -15,7 +17,8 @@ const RegisterForm = () => {
         try {
             const newUser = await axios.post('http://localhost:8000/api/register/', {first_name, last_name, email, password})
             if(newUser.status === 201){
-                alert(newUser.data)
+                alert(newUser.data.message)
+                navigate('/home')
             }
         }
         catch(err){
@@ -34,7 +37,7 @@ const RegisterForm = () => {
             </div>
 
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form onSubmit={handleRegistration} className="space-y-6" action="#" method="POST">
+                <form onSubmit={handleRegistration} className="space-y-6" method="POST">
                     <div>
                         <label
                             htmlFor="first_name"
