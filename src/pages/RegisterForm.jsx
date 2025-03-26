@@ -127,8 +127,10 @@ const RegisterForm = () => {
                     </div>
                 </form>
                 <p className="mt-10 text-center text-sm/6 text-gray-500">
-                    Already a member?
-                        <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500"> Sign in here</a>
+                    Already a member?{' '}
+                    <a href="/signin" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                        Sign in here
+                    </a>
                 </p>
             </div>
         </div>
