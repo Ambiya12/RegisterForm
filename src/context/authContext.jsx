@@ -16,7 +16,7 @@ export const AuthController = ({ children }) => {
             console.log(response)
             localStorage.setItem('token', response.data)
             setIsAuthenticated(true)
-            navigate('/');
+            navigate('/home');
         }
     } catch (err) {
         console.log(err.response.data);
@@ -28,7 +28,7 @@ export const AuthController = ({ children }) => {
   
 
   return (
-    <AuthContext.Provider value={[isAuthenticated, setIsAuthenticated, handleSignIn]}>
+    <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, handleSignIn}}>
       {children}
     </AuthContext.Provider>
   );
