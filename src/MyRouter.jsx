@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router'
+import {Routes, Route, Navigate} from 'react-router'
 import App from './App'
 import Profile from './pages/Profile'
 import Navbar from './components/NavBar'
@@ -14,6 +14,7 @@ const MyRouter = () => {
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/register' element={<RegisterForm/>}/>
             <Route path='/signin' element={<SignIn/>}/>
+            <Route path="*" element={<p>404 Not Found</p>} />
         </Routes>
         </>
     )
