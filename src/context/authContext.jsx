@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router";
 
@@ -8,6 +8,13 @@ export const AuthController = ({ children }) => {
   let navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   const handleSignIn = async (e, email, password) => {
     e.preventDefault();
     try {
@@ -25,10 +32,15 @@ export const AuthController = ({ children }) => {
         }
     }
 };
-  
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsAuthenticated(false);
+    navigate('/');
+  };
 
   return (
-    <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, handleSignIn}}>
+    <AuthContext.Provider value={{isAuthenticated, setIsAuthenticated, handleSignIn, handleLogout}}>
       {children}
     </AuthContext.Provider>
   );
